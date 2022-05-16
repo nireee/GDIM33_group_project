@@ -17,7 +17,7 @@ public class Link : MonoBehaviour
 
     private SpriteRenderer _sprite;
 
-    protected Rigidbody2D _rigidbody;
+    public Rigidbody2D _rigidbody;
 
     private void Start()
     {
@@ -28,13 +28,9 @@ public class Link : MonoBehaviour
         _sprite = GetComponent<SpriteRenderer>();
 
         _rigidbody = GetComponent<Rigidbody2D>();
-
-        GrappleHookLauncher._instance.AddLink(this);
-
-
     }
 
-    private void FixedUpdate() // maybe change to Update
+    private void FixedUpdate()
     {
         if (_belowLink != null)
             return;
@@ -44,25 +40,13 @@ public class Link : MonoBehaviour
             _belowLink = _player;
 
             HingeJoint2D playerhg2D = _player.GetComponent<HingeJoint2D>();
+            playerhg2D.enabled = true;
             playerhg2D.connectedBody = _rigidbody;
             playerhg2D.connectedAnchor = new Vector2(-2, 0);
         }
         else if ((GrappleHookLauncher._instance._links.Count < GrappleHookLauncher._instance._maxRopeLinks) && Vector3.Distance(transform.position, _launcher.position) >= _sprite.bounds.size.x)
         {
-            GameObject newRopeLink = Instantiate(_ropeLinkPrefab, _launcher.position, transform.rotation);
-
-            Link link = newRopeLink.GetComponent<Link>();
-
-            
-            // setting each rope link's variables to appropriate gameObjects
-            _belowLink = newRopeLink;
-            link._aboveLink = gameObject;
-
-
-            // setting up hinge joints
-            HingeJoint2D hg = newRopeLink.GetComponent<HingeJoint2D>();
-            hg.connectedBody = _rigidbody;
-            hg.connectedAnchor = new Vector2(-1, 0);
+            GrappleHookLauncher._instance.AddLink(this);
         }
     }
 

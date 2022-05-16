@@ -726,9 +726,11 @@ GameObject:
   - component: {fileID: 1501263783}
   - component: {fileID: 1501263785}
   - component: {fileID: 1501263784}
+  - component: {fileID: 1501263788}
   - component: {fileID: 1501263786}
   - component: {fileID: 1501263787}
-  - component: {fileID: 1501263788}
+  - component: {fileID: 1501263789}
+  - component: {fileID: 1501263790}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -780,14 +782,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 2.5
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1501263786
 MonoBehaviour:
@@ -813,9 +815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 546977a99d2adf04a9a12d268103a1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerhg2D: {fileID: 1501263788}
   _launcher: {fileID: 510352931}
   _launchForce: 1000
   _grappleHookPrefab: {fileID: 8343645256483382364, guid: c444eb06f4e450d469fc43ce297aab01, type: 3}
+  _ropeLinkPrefab: {fileID: 7703427655325772573, guid: e62942d4a795c194a845b399fea0b726, type: 3}
   _links: []
   _maxRopeLinks: 15
   _hookLanded: 0
@@ -826,10 +830,10 @@ HingeJoint2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501263782}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 1501263785}
+  m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
@@ -843,6 +847,36 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &1501263789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501263782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3808e0ba2633ae940b475835bee1541b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _climbRate: 0.15
+  _descendRate: 0.15
+--- !u!114 &1501263790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501263782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104f65c00c9bba840bdd51fe064874ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeedForce: 100
+  _speedGainRate: 5
+  _speedLossRate: 10
+  _rigidbody: {fileID: 1501263785}
 --- !u!1 &1568525937
 GameObject:
   m_ObjectHideFlags: 0

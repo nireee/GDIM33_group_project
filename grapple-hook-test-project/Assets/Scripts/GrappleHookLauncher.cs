@@ -7,6 +7,9 @@ public class GrappleHookLauncher : MonoBehaviour
     public static GrappleHookLauncher _instance;
 
     [SerializeField]
+    private HingeJoint2D _playerhg2D;
+
+    [SerializeField]
     private Transform _launcher;
 
     [SerializeField]
@@ -14,6 +17,9 @@ public class GrappleHookLauncher : MonoBehaviour
 
     [SerializeField]
     private GameObject _grappleHookPrefab;
+
+    [SerializeField]
+    private GameObject _ropeLinkPrefab;
 
     public List<Link> _links = new List<Link>();
 
@@ -45,12 +51,44 @@ public class GrappleHookLauncher : MonoBehaviour
 
             Rigidbody2D rb2D = hook.GetComponent<Rigidbody2D>();
             rb2D.AddForce(_launcher.right * _launchForce);
+
+            _links.Add(hook.GetComponent<Link>());
+        }
+        else if (Input.GetButtonDown("Fire2"))
+        {
+            ResetGrappleHook();
         }
     }
 
-    public void AddLink(Link newLink)
+    public void AddLink(Link prevLink)
     {
+        GameObject newRopeLinkGO = Instantiate(_ropeLinkPrefab, _launcher.position, prevLink.gameObject.transform.rotation);
+
+        Link newLink = newRopeLinkGO.GetComponent<Link>();
+
+        // setting each rope link's variables to appropriate gameObjects
+        prevLink._belowLink = newRopeLinkGO;
+        newLink._aboveLink = prevLink.gameObject;
+
+        // setting up hinge joints
+        HingeJoint2D hg = newRopeLinkGO.GetComponent<HingeJoint2D>();
+        hg.connectedBody = prevLink._rigidbody;
+        hg.connectedAnchor = new Vector2(-1, 0);
+
         _links.Add(newLink);
+    }
+
+    public void RemoveLastLink()
+    {
+        if (_links.Count <= 1)
+            return;
+
+        if (!_hookLanded)
+            return;
+
+        Destroy(_links[_links.Count - 1].gameObject);
+
+        _links.RemoveAt(_links.Count - 1);
     }
 
     private void ResetGrappleHook()
@@ -61,5 +99,7 @@ public class GrappleHookLauncher : MonoBehaviour
         }
 
         _links = new List<Link>();
+
+        _playerhg2D.enabled = false;
     }
 }

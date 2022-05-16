@@ -148,6 +148,7 @@ MonoBehaviour:
   _aboveLink: {fileID: 0}
   _belowLink: {fileID: 0}
   _ropeLinkPrefab: {fileID: 7703427655325772573}
+  _rigidbody: {fileID: 0}
 --- !u!233 &2801301247812500037
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -170,5 +171,5 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: -160
-    m_UpperAngle: 160
+    m_LowerAngle: 14
+    m_UpperAngle: 345

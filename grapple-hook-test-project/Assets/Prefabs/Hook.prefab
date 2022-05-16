@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8343645256483382364}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.1159163, y: 2.2254615, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 473393986413409840}
@@ -138,6 +138,7 @@ MonoBehaviour:
   _aboveLink: {fileID: 0}
   _belowLink: {fileID: 0}
   _ropeLinkPrefab: {fileID: 7703427655325772573, guid: e62942d4a795c194a845b399fea0b726, type: 3}
+  _rigidbody: {fileID: 0}
 --- !u!1 &8945045188309754244
 GameObject:
   m_ObjectHideFlags: 0
