@@ -33,10 +33,7 @@ public class PlayerSwingMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!GrappleHookLauncher._instance._hookLanded)
-            return;
-
-        if (_xInput <= -.1 || _xInput >= .1)
+        if (GrappleHookLauncher._instance._hookLanded && (_xInput <= -.1 || _xInput >= .1))
         {
             _rigidbody.AddForce(new Vector2(_xInput * _currentSpeedForce, 0));
 

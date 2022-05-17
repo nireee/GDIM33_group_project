@@ -45,8 +45,6 @@ public class GrappleHookLauncher : MonoBehaviour
         {
             ResetGrappleHook();
 
-            _hookLanded = false;
-
             GameObject hook = Instantiate(_grappleHookPrefab, _launcher.position, _launcher.rotation);
 
             Rigidbody2D rb2D = hook.GetComponent<Rigidbody2D>();
@@ -101,5 +99,7 @@ public class GrappleHookLauncher : MonoBehaviour
         _links = new List<Link>();
 
         _playerhg2D.enabled = false;
+
+        _hookLanded = false;
     }
 }
