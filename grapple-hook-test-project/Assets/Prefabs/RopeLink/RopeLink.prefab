@@ -171,5 +171,5 @@ HingeJoint2D:
     m_MaximumMotorForce: 10000
   m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 14
+    m_LowerAngle: 16
     m_UpperAngle: 345
