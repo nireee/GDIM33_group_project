@@ -76,7 +76,7 @@ public class GrappleHookLauncher : MonoBehaviour
         _links.Add(newLink);
     }
 
-    public void RemoveLastLink()
+    public void Climb()
     {
         if (_links.Count <= 1)
             return;
@@ -87,6 +87,17 @@ public class GrappleHookLauncher : MonoBehaviour
         Destroy(_links[_links.Count - 1].gameObject);
 
         _links.RemoveAt(_links.Count - 1);
+    }
+
+    public void Descend()
+    {
+        if (_links.Count >= _maxRopeLinks)
+            return;
+
+        if (!_hookLanded)
+            return;
+
+        AddLink(_links[_links.Count - 1]);
     }
 
     private void ResetGrappleHook()

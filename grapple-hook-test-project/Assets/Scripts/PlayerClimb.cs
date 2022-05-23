@@ -22,17 +22,22 @@ public class PlayerClimb : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.W) && _timeSinceClimbed >= _climbRate)
+        if (_timeSinceClimbed < _climbRate)
+        {
+            _timeSinceClimbed += Time.deltaTime;
+        }
+        else if (Input.GetKey(KeyCode.W))
         {
             _timeSinceClimbed = 0;
 
-            GrappleHookLauncher._instance.RemoveLastLink();
+            GrappleHookLauncher._instance.Climb();
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKey(KeyCode.S))
         {
             // implement descending the grapple hook by adding another rope link to the end and connecting it to the player
-        }
+            _timeSinceClimbed = 0;
 
-        _timeSinceClimbed += Time.deltaTime;
+            GrappleHookLauncher._instance.Descend();
+        }
     }
 }

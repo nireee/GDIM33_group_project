@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
+    [SerializeField]
+    private Transform _childBody;
+
     void Update()
     {
         var mousePos = Input.mousePosition;
@@ -17,5 +20,7 @@ public class PlayerAim : MonoBehaviour
         var lookAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, lookAngle));
+
+        _childBody.transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.z * -1.0f);
     }
 }
