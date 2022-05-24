@@ -8,6 +8,8 @@ TagManager:
   - Launcher
   - HP
   - edge
+  - key
+  - door
   layers:
   - Default
   - TransparentFX
