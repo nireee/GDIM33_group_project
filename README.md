@@ -34,5 +34,4 @@ Nire's To-do list:
       - when pressed the gravity reverses
   - button_door script
       - when pressed the button by colliding with it, the door disappears
-  - key_door script
-      - game finished when collide the door with key collected
+
