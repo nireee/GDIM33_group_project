@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CanGrapple
   - Launcher
+  - HP
+  - edge
   layers:
   - Default
   - TransparentFX
