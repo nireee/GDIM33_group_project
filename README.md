@@ -16,22 +16,6 @@ Controls:
 
 
 
-
-
-
-
-
-
-
-
-
-
-Nire's To-do list:
-  - enemy monster script
-      - horizontal monster
-      - vertical monster
-  - reverse button script
-      - when pressed the gravity reverses
-  - button_door script
-      - when pressed the button by colliding with it, the door disappears
+Existing bugs:
+  - when reverse, the control methods will change
 
