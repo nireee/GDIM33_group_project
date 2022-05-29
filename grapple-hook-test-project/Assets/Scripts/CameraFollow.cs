@@ -14,10 +14,14 @@ public class CameraFollow : MonoBehaviour
     public float TopLimit;
     public float BottomLimit;
 
+    public LevelControl lc;
+    public bool camera_rotated;
+
 
     // Update is called once per frame
     void Update()
     {
+        RotateCamera();
         Vector3 startPos = transform.position;
         Vector3 endPos = player.transform.position;
 
@@ -35,5 +39,27 @@ public class CameraFollow : MonoBehaviour
             Mathf.Clamp(transform.position.y, BottomLimit, TopLimit),
             transform.position.z
         );
+        
+    }
+
+    public void RotateCamera()
+    {
+        if(lc.has_reversed == true && camera_rotated == false)
+        {
+            posoffset = new Vector2(2, -2.7f);
+            transform.Rotate(0, 0, 180);
+            camera_rotated = true;
+        }
+        if(lc.has_reversed == false && camera_rotated == true)
+        {
+            posoffset = new Vector2(2, 3.5f);
+            transform.Rotate(0, 0, 0);
+            camera_rotated = false;
+        }
+        //else
+        //{
+        //    posoffset = new Vector2(2, 3.5f);
+        //    transform.Rotate(0, 0, 0);
+        //}
     }
 }
