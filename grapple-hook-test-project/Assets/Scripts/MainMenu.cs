@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject controlPanel;
     // Start is called before the first frame update
     void Start()
     {
-        
+        controlPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,5 +29,15 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void OpenControlPanel()
+    {
+        controlPanel.SetActive(true);
+    }
+
+    public void CloseControlPanel()
+    {
+        controlPanel.SetActive(false);
     }
 }

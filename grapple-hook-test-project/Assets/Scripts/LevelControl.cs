@@ -42,6 +42,7 @@ public class LevelControl : MonoBehaviour
     {
         CompleteGame();
         ReverseGravity();
+        OpenButtonDoor();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

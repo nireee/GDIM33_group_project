@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HealthPoints : MonoBehaviour
 {
@@ -73,5 +74,10 @@ public class HealthPoints : MonoBehaviour
             go_text.SetActive(true);
         }
 
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }
